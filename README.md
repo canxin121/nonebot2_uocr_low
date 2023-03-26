@@ -10,7 +10,7 @@
 </div>
 
 ## 介绍
-- 由我仓库的另一个项目拓展而来，基于keras mnist的手写数字，字母识别，提供三个训练好的模型，mnist,emnist-letter,emnist-byclass
+- 由我仓库的另一个项目uocr拓展而来，基于keras mnist的手写数字识别，字母识别，提供三个训练好的模型，mnist,emnist-letter,emnist-byclass
 ![](demo.jpg)
 ## 安装  
 （现在只有手动安装）
