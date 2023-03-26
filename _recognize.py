@@ -1,7 +1,8 @@
 import cv2 as cv
 import numpy as np
-import tensorflow as tf
-
+from keras.models import load_model
+from keras.preprocessing import image as imagepre
+from pathlib import Path
 digits = []
 num_row = 1
 # map:0mnist,1letter,2class
@@ -9,17 +10,17 @@ map = '0'
 # model:0best,emnist_letter
 modelchoice = '0'
 mappings = {}
-root = '.\src\plugins\\nonebot2_uocr_low'
-model = tf.keras.models.load_model(root + r'\best.h5')
+root = str(Path(__file__).parent)
+model = load_model(root + r'\best.h5')
 
 def setmodelchoice(modelchoice):
     global model
     if modelchoice == '0':
-        model = tf.keras.models.load_model(root + r'\best.h5')
+        model = load_model(root + r'\best.h5')
     elif modelchoice == '1':
-        model = tf.keras.models.load_model(root + r'\emnist_leter.h5')
+        model = load_model(root + r'\emnist_leter.h5')
     elif modelchoice == '2':
-        model = tf.keras.models.load_model(root + r'\emnist.h5')
+        model = load_model(root + r'\emnist.h5')
 
 
 def setmatchoice(map):
@@ -130,7 +131,7 @@ def predict_digit(img):
         res = model.predict([img])[0]
         return np.argmax(res), max(res)
     else:
-        img = tf.keras.preprocessing.image.img_to_array(img)
+        img = imagepre.img_to_array(img)
         img = img / 255.0
         img = np.expand_dims(img, axis=0)
         # 使用模型进行预测，得到一个概率分布
