@@ -15,7 +15,9 @@
 ## 安装  
 （现在只有手动安装）
 * 手动安装
-
+  ```
+  git clone https://github.com/canxin121/nonebot2_uocr_low.git
+  ```
 ## 配置文件
 
 
