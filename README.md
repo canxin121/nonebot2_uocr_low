@@ -27,7 +27,8 @@
 
 - 识别command /字符识别
 ```
-#请输入模式(0:mnist,1:letter,2:byclass)和行数(0~4)，如
-/字符识别02表示mnist两行
+ #请输入模式(0:mnist,1:letter,2:byclass)和行数(0~4)，如
+/字符识别02  
+ #表示mnist两行
 
 ```
