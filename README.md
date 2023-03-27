@@ -10,6 +10,7 @@
 </div>
 
 ## 介绍
+- 有两个分支，main适合在windows使用，可以配合UOCR项目自己训练模型，tflite分支适合在linux服务器上使用，占空间小
 - 由我仓库的另一个项目uocr拓展而来，基于keras mnist的手写数字识别，字母识别，提供三个训练好的模型，mnist,emnist-letter,emnist-byclass  
 - 目前识别精度不高，mnist>byclass>letter,mnist只能识别数字，byclass只能识别字母且不区分大小写，class可以识别所有数字，字母类型但是精度不高  
 ![demo](https://user-images.githubusercontent.com/69547456/227775526-6f549353-d3d1-4057-858a-2a43bdfaaef6.png)
