@@ -1,8 +1,10 @@
 import cv2 as cv
-import numpy as np
 from keras.models import load_model
-from keras.preprocessing import image as imagepre
 from pathlib import Path
+import numpy as np
+import tflite_runtime.interpreter as tf
+
+import h5py
 digits = []
 num_row = 1
 # map:0mnist,1letter,2class
@@ -124,25 +126,25 @@ def crop_image(img, num_row):
     # 返回裁剪后的图像列表
     return newimgs
 
+def predict_character(img):
+    # Load TFLite model and allocate tensors.
+    interpreter = tf.lite.Interpreter(model_path=root + r"\best.tflite")
+    interpreter.allocate_tensors()
 
-def predict_digit(img):
-    if modelchoice == '0':
-        img = img.reshape(1, 28, 28, 1)
-        res = model.predict([img])[0]
-        return np.argmax(res), max(res)
-    else:
-        img = imagepre.img_to_array(img)
-        img = img / 255.0
-        img = np.expand_dims(img, axis=0)
-        # 使用模型进行预测，得到一个概率分布
-        pred = model.predict(img)
-        # 找到概率最大的类别，并输出对应的标签
+    # Get input and output tensors.
+    input_details = interpreter.get_input_details()
+    output_details = interpreter.get_output_details()
 
-        class_index = np.argmax(pred)
-        class_label = mappings[class_index]
-        print(f"The predicted letter is {class_label} with probability {max(pred)}.")
-        return class_label, max(max(pred))
+    # Load image data
+    img_array = tf.keras.preprocessing.image.img_to_array(img)
+    img_array = tf.expand_dims(img_array, 0)  # Create batch axis
 
+    # Test model on input data.
+    interpreter.set_tensor(input_details[0]['index'], img_array)
+    interpreter.invoke()
+    output_data = interpreter.get_tensor(output_details[0]['index'])
+
+    return np.argmax(output_data), np.max(output_data)
 
 def recognize(fullimg, num_row, mode):
     global modelchoice, map
@@ -158,7 +160,7 @@ def recognize(fullimg, num_row, mode):
         return result
     else:
         for img in cropped_images:
-            digit, prediction = predict_digit(img)
+            digit, prediction = predict_character(img)
             digits.append(digit)
             predictions.append(prediction)
         avgpredit = np.mean(predictions)

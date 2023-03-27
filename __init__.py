@@ -2,6 +2,7 @@ import urllib.request
 
 import numpy as np
 from cv2 import imdecode
+
 from nonebot import on_command
 from nonebot.adapters.onebot.v11 import Bot, Event
 from nonebot.typing import T_State
