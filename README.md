@@ -16,13 +16,18 @@
 ![demo](https://user-images.githubusercontent.com/69547456/227775526-6f549353-d3d1-4057-858a-2a43bdfaaef6.png)
 ## 安装  
 （现在只有手动安装）
-* 手动安装
+* 手动安装  
+  windows推荐使用
   ```
   git clone https://github.com/canxin121/nonebot2_uocr_low.git
   ```  
+  linux服务器推荐使用
+  ```
+  git clone -b tflite https://github.com/canxin121/nonebot2_uocr_low.git
+  ``` 
   下载完成后在bot项目的pyproject.toml文件手动添加插件：  
   ```
-  plugin_dirs = ["xxxxxx","xxxxxx",......,"下载完成的插件路径/nonebot2_uocr_low.git"]  
+  plugin_dirs = ["xxxxxx","xxxxxx",......,"下载完成的插件路径/nonebot-plugin-ai-interviewer"]  
   ``` 
 ## 使用方法
 
