@@ -1,5 +1,4 @@
 import cv2 as cv
-from keras.models import load_model
 from pathlib import Path
 import numpy as np
 import tflite_runtime.interpreter as tf
@@ -13,16 +12,15 @@ map = '0'
 modelchoice = '0'
 mappings = {}
 root = str(Path(__file__).parent)
-model = load_model(root + r'\best.h5')
-
-def setmodelchoice(modelchoice):
-    global model
-    if modelchoice == '0':
-        model = load_model(root + r'\best.h5')
-    elif modelchoice == '1':
-        model = load_model(root + r'\emnist_leter.h5')
-    elif modelchoice == '2':
-        model = load_model(root + r'\emnist.h5')
+# model = tf.Interpreter(root + )
+# def setmodelchoice(modelchoice):
+#     global model
+#     if modelchoice == '0':
+#         model = load_model(root + r'\best.h5')
+#     elif modelchoice == '1':
+#         model = load_model(root + r'\emnist_leter.h5')
+#     elif modelchoice == '2':
+#         model = load_model(root + r'\emnist.h5')
 
 
 def setmatchoice(map):
@@ -128,7 +126,7 @@ def crop_image(img, num_row):
 
 def predict_character(img):
     # Load TFLite model and allocate tensors.
-    interpreter = tf.lite.Interpreter(model_path=root + r"\best.tflite")
+    interpreter = tf.Interpreter(model_path=root + r"\best.tflite")
     interpreter.allocate_tensors()
 
     # Get input and output tensors.
@@ -150,8 +148,8 @@ def recognize(fullimg, num_row, mode):
     global modelchoice, map
     modelchoice = mode
     map = mode
-    setmodelchoice(mode)
-    setmatchoice(mode)
+    # setmodelchoice(mode)
+    # setmatchoice(mode)
     cropped_images = crop_image(fullimg, num_row)
     digits = []
     predictions = []
