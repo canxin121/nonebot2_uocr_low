@@ -6,7 +6,7 @@
 
 <div align="center">
 
-# nonebot-plugin-ai-interviewer
+# nonebot2_uocr_low
 </div>
 
 ## 介绍
