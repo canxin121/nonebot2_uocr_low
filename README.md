@@ -17,7 +17,7 @@
 ![demo](https://user-images.githubusercontent.com/69547456/227775526-6f549353-d3d1-4057-858a-2a43bdfaaef6.png)
 ## 安装  
 （现在只有手动安装）
-* 手动安装
+* 手动安装  
   win
   ```
   git clone https://github.com/canxin121/nonebot2_uocr_low.git
