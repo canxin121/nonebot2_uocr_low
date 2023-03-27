@@ -18,9 +18,11 @@
 ## 安装  
 （现在只有手动安装）
 * 手动安装
+  win
   ```
   git clone https://github.com/canxin121/nonebot2_uocr_low.git
-  ```  
+  ```
+  linux
   ```
   git clone -b tflite https://github.com/canxin121/nonebot2_uocr_low.git
   ```  
