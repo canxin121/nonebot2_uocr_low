@@ -27,7 +27,7 @@
   ``` 
   下载完成后在bot项目的pyproject.toml文件手动添加插件：  
   ```
-  plugin_dirs = ["xxxxxx","xxxxxx",......,"下载完成的插件路径/nonebot-plugin-ai-interviewer"]  
+  plugin_dirs = ["xxxxxx","xxxxxx",......,"下载完成的插件路径/nonebot2_uocr_low"]  
   ``` 
 ## 使用方法
 
